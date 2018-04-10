@@ -2,12 +2,19 @@
   <div class="box">
     <!-- {{lesson.time}}:{{lesson.title}} -->
     <div class="field is-grouped">
-      <p class="control timeinput">
+      <p class="control timeinput has-icons-left">
         <input @input="updateTime($event.target.value)" class="input" type="number" placeholder="minutes">
+        <span class="icon is-small is-left">
+          <i class="fas fa-clock"></i>
+        </span>
       </p>
-      <p class="control is-expanded">
+      <p class="control is-expanded has-icons-left">
         <input @input="updateName($event.target.value)" class="input" type="text" placeholder="name">
+        <span class="icon is-small is-left">
+          <i class="fas fa-lightbulb"></i>
+        </span>
       </p>
+      <button class="delete" @click="$emit('delete')"></button>
     </div>
   </div>
 </template>
@@ -42,6 +49,6 @@ export default {
 
 <style lang="scss">
 .timeinput {
-  width:100px;
+  width:130px;
 }
 </style>

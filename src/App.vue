@@ -1,11 +1,7 @@
 <template>
   <div id="app">
     <div class="section">
-      <div class="container">
-        <div class="columns is-centered">
-          <lesson-list class="column is-half"></lesson-list>
-        </div>
-      </div>
+      <lesson-list></lesson-list>
     </div>
   </div>
 </template>
