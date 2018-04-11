@@ -12,7 +12,7 @@
                     </p>
                 </div>
             </div>
-            <div class="column is-half">
+            <div class="column is-half box">
                 <lesson-item
                     v-for="(lesson, index) in lessons"
                     :key="index"
@@ -23,7 +23,9 @@
                 </div>
             </div>
             <div class="column is-one-quarter">
-                {{lessonsOutput}}
+                <p v-for="(lesson, index) in lessonsWithTime" :key="index">
+                    {{lesson.timeStamp}} - {{lesson.name}}
+                </p>
             </div>
         </div>
     </div>
@@ -49,14 +51,14 @@ export default {
       lessonItem
   },
   computed: {
-      lessonsOutput() {
+      lessonsWithTime() {
           let time = moment(this.startTime, moment.HTML5_FMT.TIME)
-          let strings = this.lessons.map((lesson) => {
-              let string = `${time.format('hh:mm')}: ${lesson.name}`
+          let lessonsWithTime = this.lessons.map((lesson) => {
+              lesson.timeStamp = time.format('hh:mm')
               time.add(lesson.time, 'minutes')
-              return string;
+              return lesson;
           })
-          return strings
+          return lessonsWithTime
       }
   },
   methods: {
